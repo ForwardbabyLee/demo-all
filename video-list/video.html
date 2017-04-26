@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 引入video.js的样式文件 -->
+    <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+    <script src="../../js-bag/jquery-1.11.2.min.js"></script>
+    <script src="http://vjs.zencdn.net/c/video.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="css/video-js.css" />-->
+    <title>Title</title>
+    <!-- 如果没有使用Modernizr，则使用以下代码做shiv -->
+    <script type="text/javascript">
+        document.createElement('video');document.createElement('audio');document.createElement('track');
+    </script>
+    <!-- 引入video.js的脚本文件 -->
+    <!--<script src="http://vjs.zencdn.net/5.0.2/video.js" type="text/javascript" charset="utf-8"></script>-->
+</head>
+<body>
+
+<video id="sample_video" preload="none"  class="video-js vjs-default-skin vjs-big-play-centered" data-setup='{ "controls": true, "autoplay": false, "preload": "none", "poster": "images/sample_video_poster.png", "width": 750, "height":600 }'>
+    <source src="http://video.wenjf.com/Act-ss-mp4-ld/01166074c3414d4ab27d5a6089ff9eba/taitong_1.mp4" type='video/mp4' />
+</video>
+<script type="text/javascript">
+    var myPlayer = null;
+    $(document).ready(function() {
+
+        if(!myPlayer) {
+            myPlayer = videojs("video_center_video");
+        }
+        myPlayer.play();
+
+    });
+</script>
+</body>
+</html>

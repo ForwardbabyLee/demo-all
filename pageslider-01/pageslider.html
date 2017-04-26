@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="format-detection" content="telephone=no, email=no">
+	<meta name="author" content="" />
+    <title>default</title>
+    <link rel="stylesheet" href="css/pageslider.css"/>
+    <!--custom style-->
+    <style>
+        <!-- .current 类名会让所有当前slide-，动起来->
+        .current .title{
+            -webkit-animation: slideToTop .8s ease both;
+        }
+
+        .current .subtitle{
+            -webkit-animation: slideToTop .8s 0.3s ease both;
+        }
+	
+
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <div class="page" data-lock-next="">
+        <div class="title">第一页</div>
+        <div class="subtitle">page one subtitle</div>
+         <div class="arrow"></div>
+    </div>
+
+    <div class="page" data-lock-prev="">
+        <div class="title">第二页</div>
+        <div class="subtitle">page two subtitle</div>
+         <div class="arrow"></div>
+    </div>
+    <div class="page">
+        <div class="title">第三页</div>
+        <div class="subtitle">page three subtitle</div>
+         <div class="arrow"></div>
+    </div>
+    <div class="page">
+        <div class="title">第四页</div>
+        <div class="subtitle">page four subtitle</div>
+		 <div class="arrow"></div>
+    </div>
+	<div class="page" style="background:pink">
+        <div class="title">第五页</div>
+        <div class="subtitle">page five subtitle</div>
+    </div>
+</div>
+
+
+<ul class="indicator">
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+</ul>
+
+<script src="js/zepto_modify.js"></script>
+<script src="js/PageSlider.js"></script>
+<script>
+    var pageslide = new PageSlider({
+		num:0,
+		liLength:$(".indicator li").length -1,
+        pages: $('.page-wrap .page'),
+		gestureFollowing: true,  //开启手势跟随 
+		hasDot: true,
+		preventDefault: true,           //可选，是否阻止默认行为
+		rememberLastVisited: true,      //可选，记住上一次访问结束后的索引值，可用于实现页面返回后是否回到上次访问的页面
+		animationPlayOnce: false,      //可选，切换页面时，动画只执行一次
+		dev: 0, //0|1|2|3|...
+		oninit: function (e) {
+			//页面初始化
+//			$('.indicator li').removeClass('cur').eq(0).addClass('cur');
+		},      //可选，每一屏切换完成时的回调
+		onchange: function () {
+			$(".page-wrap>div").each(function(){
+				if($(this).hasClass("current")){
+					var $index = $(this).index();
+					$('.indicator li').removeClass('cur').eq($index).addClass('cur');
+				}
+			});
+		}
+    });
+	
+	/*setTimeout(function(){
+		pageslide.next();
+	},2000);*/
+</script>
+</body>
+</html>
