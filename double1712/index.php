@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mayling
- * Date: 17/12/6
- * Time: 下午4:26
- */
 //$this->title = "12.12年终盛典 钜惠全网";
 //$this->registerMetaTag(['charset' => 'UTF-8']);
 //$this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no']);
@@ -23,7 +17,7 @@
 //$this->registerJs('var data =  ' . json_encode($signPackage) . ';', 3);
 //$this->registerJs('data.title = "12.12年终盛典 钜惠全网";data.desc = "全场项目最高三倍积分，积分商城爆款八折兑换，更有现金红包及全民大抽奖等你来";data.pathname="/active/double1712";data.imgurl = "/static/default/double1712/images/share-icon.png";', 3);
 //$this->registerJs('winxinSahre(data);', 3);
-?>
+//?>
 <!--double -->
 <div class="flex-content ">
     <div class="banner">
@@ -174,6 +168,12 @@
         var annualMoney = ''; //单位万元
         var allDrawChance = ''; //活动抽奖次数
         var hadDrawNum = '';// 已经抽奖次数
+        function judge(obj){
+            for (var i in obj){//如果不为空，则会执行到这一步，返回true
+                return true;
+            }
+            return false;
+        }
         init();
         prizeResult();
         // 我的奖品
@@ -200,7 +200,7 @@
                 $('.go-to-exchange .btn').attr({'href': '/user/login?from='+pointMallUrl});
                 var awardList = data.awardList; // 名单
                 var listHtml = '';
-                if (awardList.length === 0) {
+                if (!judge(awardList)) {
                     $('.prize-list').hide();
                 } else {
                     for(var i=0; i< awardList.length; i++){
@@ -234,7 +234,7 @@
                     var userAwardList = data.userAwardList;
                     var userAwardHtml = '';
                     if (elments == 'prize') {
-                        if (userAwardList.length == 0) {
+                        if (!judge(userAwardList)) {
                             $('.pop-my-prize').show();
                         } else {
                             $('.have-prize .have-prize-list ul').empty();

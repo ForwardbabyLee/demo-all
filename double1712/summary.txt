@@ -150,3 +150,13 @@ ToDo：4. 页面逻辑
     9⃣️  在app 里，页面按钮跳到原生登录、注册、投资等页面的跳转问题
      app-viewtype = 'login' success-url=''
       app-viewtype="register" register-channel="double1712"
+
+     ❤️❤️  判断object 为空，object 为length属性：
+   🔟  function judge(obj){
+       　for(var i in obj) {//如果不为空，则会执行到这一步，返回true
+       　　　　return true;
+       　}
+       　 return false;
+        }
+        var b = {};
+        console.log(judge(b)) //如果为空，则返回 false
