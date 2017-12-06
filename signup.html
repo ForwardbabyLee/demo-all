@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 设置IE浏览器的解析模式-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" >
+    <meta name="renderer" content="webkit">
+    <title>注册</title>
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet"  type="text/css">
+    <link href="css/index.css" rel="stylesheet"  type="text/css">
+    <style>
+        .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+            padding: 0;
+        }
+
+        body, p, ul, ol, li, dl, dt, dd, form, h1, h2, h3, h4, h5, h6, input {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+
+        img {
+            border: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        input {
+            outline: none;
+        }
+
+        i, em {
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+            font-size: 62.5%;
+            min-width:320px;
+            max-width:640px;
+        }
+
+        .container {
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        .row {
+            margin: 0;
+        }
+
+        .commit_password {
+            margin: 100px auto;
+            width: 100%;
+            height: 400px;
+        }
+
+        .set_pass, .pass {
+            position: relative;
+            top: 0;
+            left: 0;
+            padding-left: 10px;
+            margin-bottom: 28px;
+            height: 40px;
+            border: 1px solid #d7d7d7;
+        }
+
+        label {
+            width: 80px;
+            display: inline-block;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        input.user-name {
+            position: relative;
+            min-width: 200px;
+            height: 40px;
+            border: none;
+            font-size: 1rem;
+            background: none;
+            z-index: 2;
+        }
+
+        .placeholder {
+            position: absolute;
+            top: 0;
+            left: 100px;
+            line-height: 40px;
+            color: #d7d7d7;
+            font-size: 1rem;
+            z-index: 1;
+        }
+
+        .prompting {
+            margin: 0;
+            height: 1.4rem;
+            line-height: 1.4rem;
+            color: #ccc;
+            font-size: .8rem;
+            display: none;
+        }
+
+        .err_prompting {
+            margin: 0;
+            height: 1.4rem;
+            line-height: 1.4rem;
+            color: #f33446;
+            font-size: .8rem;
+            display: none;
+        }
+
+        input[type='submit'] {
+            margin:45px auto 0;
+            padding:1rem 3rem;
+            color: #fff;
+            font-size: 1rem;
+            background:#e2e2e2;
+            outline:none;
+            border:none;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            display: block;
+        }
+        .checkbox {
+            padding-left: 10px;
+        }
+        .triangle {
+            padding-left: 10px;
+            width:0;
+            height:0;
+            border-left:1rem solid red;
+            border-top:1rem solid transparent;
+            border-bottom:1rem solid transparent;
+        }
+
+    </style>
+    <script src="https://static.wenjf.com/v2/libs/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div class="commit_password" >
+    <!--用户名-->
+    <div class="set_pass">
+        <label>用&nbsp;&nbsp;户&nbsp;&nbsp;名</label>
+        <input type="text" id="user-name" class="user-name" maxlength="20" value="">
+        <span class="placeholder">您的账户名和登录名</span>
+        <p class="prompting">支持中文、字母、数字、“-”“_”的组合，4-20个字符</p>
+        <p class="err_prompting">格式错误,仅支持中文、字母、数字、“-”“_”的组合</p>
+    </div>
+
+    <!--登录密码-->
+    <div class="pass">
+        <label>登录密码</label>
+        <input type="password" id="user-pass" class="user-name" maxlength="20" value="">
+        <span class="placeholder">建议至少使用两种字符组合</span>
+        <p class="prompting">建议使用字母、数字和符号两种及以上的组合，6-20个字符</p>
+        <p class="err_prompting">长度只能在6-20个字符之间</p>
+    </div>
+
+    <div class="bank">
+        <label>银行卡号</label>
+        <input type="tel" id="bank-card" class="user-name" placeholder="请输入储蓄卡卡号" maxlength="24" value="178378947857">
+        <span class="placeholder">建议至少使用两种字符组合</span>
+        <p class="prompting">银行卡号</p>
+        <p class="err_prompting">长度只能在6-20个字符之间</p>
+    </div>
+    <p id="bank">18776666222</p>
+
+
+    <!--提交按钮-->
+    <input type="submit" value="注册" >
+</div>
+
+<script type="text/javascript">
+
+    var userName = $('#user-name');
+    var placeHolders1= $('.placeholder').eq(0);
+    var prompt1= $('.prompting').eq(0);
+    var errPrompt1= $('.err_prompting').eq(0);
+    var div_input1=$('.set_pass');
+
+    checkPassword(userName,placeHolders1,prompt1,errPrompt1,div_input1);
+
+    var userPass = $('#user-pass');
+    var placeHolders2= $('.placeholder').eq(1);
+    var prompt2= $('.prompting').eq(1);
+    var errPrompt2= $('.err_prompting').eq(1);
+    var div_input2= $('.pass');
+
+    checkPassword(userPass,placeHolders2,prompt2,errPrompt2,div_input2);
+
+    var submit = $("input[type='submit']");
+    submit.on('click',function(){
+        var userName = $('#user-name').val();
+        var userPass = $('#user-pass').val();
+        if( userName ){
+//                userName && userPass ==''
+            document.write(userName)
+        }
+
+
+    });
+
+    function checkPassword(a,b,c,d,e) {
+        //事件1:
+        $(a).on('focus',function(){
+            $(b).hide();//框内信息
+            $(c).show();//框下信息
+
+            //事件3:
+            $(a).on('keydown',function(){
+
+                $(a).css({color:'#000'});
+                $(c).show().css({color:'#ccc'});//框下信息
+                $(e).css({border:'1px solid #dcdddd'});
+
+                //事件4+5:     //input框内输入值后,再添加聚焦事件和失焦事件
+                $(a).on('focus',function(){
+                    $(d).hide();//框下错误信息
+                }).on('blur',function() {
+                    var inp = $(a).val().length;
+                    if (inp > 5) {
+                        $(e).css({border:'1px solid #dcdddd'});
+                    }
+                });
+
+            })
+        });
+
+        //事件2:
+        $(a).on('blur',function(){
+
+            $(c).hide();//框下信息
+            var inputVal =$(a).val();
+            if( inputVal){   //input内有val值
+                $(b).hide();//框内信息
+            } else {
+                $(b).show();//框内信息
+            }
+
+            var inp = $(a).val().length;
+            if( inp !='' && inp < 6 ){
+                $(d).show();//框下错误信息
+                $(e).css({border:'1px solid #f33446'});
+            }
+        });
+
+
+//        var card = $('#bank-card').val().replace(/\D/g, '');
+        var card = '1234567';
+        var cardParse = card.replace(/\s/g, '').replace(/(.{4})/g, "$1 ");
+        //正则，前面是将 '' 替换对象中的普通空格｜tab|换行符等输入；后面，$1 > replace替换的正则规则第一个表达式相匹配的文本，/(.{4})/g 指非4个连续文本
+
+
+
+        // 新卡的手机号--监听手机号，三段式
+        telListener('#newPhone');
+        function telListener(obj) {
+            document.querySelector(obj).addEventListener('input', function() {
+                var v = this.value.replace(/\s/g, '');
+                if(v.length < 4) return;
+                this.value = v.substr(0,3)+" "+v.substr(3,4)+" "+v.substr(7,4);
+                console.log(this.value);
+                if (this.value.charAt(this.value.length - 1) == ' ') {
+                    this.value = this.value.substring(0, this.value.length - 1);
+                }
+            });
+        }
+
+    }
+</script>
+
+</body>
+</html>

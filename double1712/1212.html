@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1212</title>
+    <link rel="stylesheet" href="https://ljk-m.wangcaigu.cn/static/default/common/css/base.css?v=4">
+    <link rel="stylesheet" href="https://ljk-m.wangcaigu.cn/static/default/common/css/top.css?v=3.0">
+    <link rel="stylesheet" href="https://ljk-m.wangcaigu.cn/static/default/common/css/bottom.css">
+    <link rel="stylesheet" href="https://ljk-m.wangcaigu.cn/static/default/common/css/comfont.css">
+    <script src="https://ljk-m.wangcaigu.cn/static/flexibleJs/lib.flexible.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://ljk-m.wangcaigu.cn/static/jquery/jquery-1.11.1.min.js"></script>
+    <script src="https://ljk-m.wangcaigu.cn/static/jquery/fastclick.js"></script>
+    <script src="js/index.js"></script>
+
+</head>
+<body>
+<!--double -->
+<div class="flex-content ">
+    <div class="banner">
+        <a class="fadeInDown icon-rule">
+            <img src="images/rule-icon.png" alt="">
+        </a>
+    </div>
+    <ul class="main-box">
+      <li class="go-to-prize">
+          <div class="yellow-bg"></div>
+          <img src="images/draw-title.png" alt="" class="draw-title">
+          <div class="draw clearfix">
+              <div class="lf-select select">
+                  <span class="content"></span>
+                  <span class="content-mask"></span>
+                  <i class="text">零食大礼包</i>
+              </div> 
+              <div class="rg-select select">
+                  <span class="content"></span>
+                  <span class="content-mask"></span>
+                  <i class="text">谢谢参与</i>
+              </div> 
+          </div>
+          <p class="chance">抽奖次数：<span class="nums">0</span></p>
+          <a class="draw-btn draw-over">立即抽奖</a>
+          <!--<a class="draw-btn draw-over">抽奖次数已用完</a>-->
+      </li>
+      <li class="go-to-invest">
+          <a class="btn" href="/site/getlists">立即投资</a>
+      </li>
+      <li class="go-to-exchange">
+          <a class="btn" >立即兑换</a>
+      </li>
+    </ul>
+    <img class="point-title" src="images/title-3-points.png">
+    <div class="my-tips">
+        <a class="my-prize">
+            <i class="my-prize-icon"></i>我的奖品
+        </a>
+        <a class="my-rate">
+            <span class="money-txt">已累计年化：</span>
+            <span class="money">234.46万</span>
+            <i class="money-icon">
+                <span class="formula">年化投资金额 ＝投资金额＊项目期限／360</span>
+                <span class="trans" ></span>
+            </i>
+        </a>
+    </div>
+    <ul class="invest-box clearfix">
+        <li><a href="/site/getlists"><img src="images/first-gifts.png" alt=""><span class="title-gifts">年化投资额500万元</span></a></li>
+        <li><a href="/site/getlists"><img src="images/second-gifts.png" alt=""><span class="title-gifts">年化投资额100万元</span></a></li>
+        <li><a href="/site/getlists"><img src="images/third-gifts.png" alt=""><span class="title-gifts">年化投资额50万元</span></a></li>
+        <li><a href="/site/getlists"><img src="images/fourth-gifts.png" alt=""><span class="title-gifts">年化投资额20万元</span></a></li>
+        <li><a href="/site/getlists"><img src="images/five-gifts.png" alt=""><span class="title-gifts">年化投资额5万元</span></a></li>
+    </ul>
+    <div class="prize-list">
+        <p class="prize-list-title">获奖名单</p>
+        <ul class="list">
+            <li><span class="phone">188***6</span><span class="name">零食大礼包</span></li>
+            <li><span class="phone">188***6</span><span class="name">零食大礼包</span></li>
+            <li><span class="phone">188***6</span><span class="name">零食大礼包</span></li>
+            <li><span class="phone">188***6</span><span class="name">零食大礼包</span></li>
+            <li><span class="phone">188***6</span><span class="name">零食大礼包</span></li>
+        </ul>
+    </div>
+    <p class="bottom-tip">本活动最终解释权归旺财谷所有</p>
+    <p class="register-bg"></p>
+    <a href="/user/signup" class="register clearfix">
+        <img src="images/register-banner.png" alt="">
+    </a>
+</div>
+<!--弹窗-->
+<div class="prizes-box">
+    <!--机会不足弹窗-->
+    <div class="outer-box no-have-chance">
+        <img src="images/no-active-status.png" class="img-icon" alt="活动非进行中">
+        <p class="txt">您的抽奖次数不足<br/>投资可获得抽奖次数</p>
+        <a class="pop-btn " href="/site/getlists">去投资</a>
+    </div>
+    <!--未开始弹窗-->
+    <div class="outer-box no-active-status">
+        <img src="images/no-active-status.png" class="img-icon" alt="活动非进行中">
+        <p class="txt">活动即将开始，继续关注哦~</p>
+        <a class="pop-btn close-pop-btn">知道了</a>
+    </div>
+    <!--抽到谢谢-->
+    <div class="outer-box thanks">
+        <p class="txt">没有抽到哦~别灰心继续努力！</p>
+        <a class="pop-btn close-pop-btn">确定</a>
+    </div>
+    <!--抽到实物-->
+    <div class="outer-box snack">
+        <div class="congrats-title">
+            <img src="images/congratulation-title-1.png" alt="">
+        </div>
+        <img src="images/snack.png" alt="零食大礼包" class="img-snack">
+        <div class="snack-txt">获得<span>零食大礼包!</span></div>
+        <div class="snack-smart-txt">（奖品将在7个工作日内发出）</div>
+        <a class="pop-btn">收下实物</a>
+    </div>
+    <!--填写收货地址-->
+    <div class="outer-box congrats">
+        <div class="congrats-title">
+            <img src="images/congratulation-title-1.png" alt="">
+        </div>
+        <div class="congrats-txt">请填写您的收货地址</div>
+        <div class="congrats-smart-txt">（奖品将在7个工作日内发出）</div>
+        <a class="pop-btn">填写收货地址</a>
+        <p class="bottom-txt close-pop-btn">已有地址</p>
+    </div>
+    <!--我的奖品 -无 -->
+    <div class="outer-box pop-my-prize">
+        <div class="congrats-title">
+            <img src="images/congratulation-title-1.png" alt="">
+        </div>
+        <div class="congrats-txt">您还没有抽到奖品</div>
+        <p class="pop-btn close-pop-btn">确认</p>
+    </div>
+    <!--我的奖品 － 有-->
+    <div class="outer-box have-prize">
+        <div class="congrats-title">
+            <img src="images/congratulation-title-1.png" alt="">
+        </div>
+        <div class="have-prize-list">
+            <ul>
+                <li><img src="images/icon-snacks.png" alt="" class="gift-list"><span class="name">获得零食大礼包</span><i class="numbers">X1</i></li>
+                <li><img src="images/icon-cash.png" alt="" class="gift-list"><span class="name">获得12.12现金红包</span><i class="numbers">X2</i></li>
+            </ul>
+        </div>
+        <p class="pop-btn close-pop-btn">确认</p>
+    </div>
+</div>
+<div class="rules-box hide" >
+    <p class="rules-title">活动规则</p>
+    <ul class="rules-list">
+        <li>1.活动时间:2017年12月12日-13日;</li>
+        <li>2.活动期间</li>
+        <li><span class="lf-num">1）</span><p class="detail-rule">全场每个项目首位投资一万元及以上（抢标王和最后一位满标（压标王）的用户，可获得12.12元现金红包，奖励将发放至您的账户，可提现；</p></li>
+        <li><span class="lf-num">2）</span><p class="detail-rule">全民大抽奖：每投资一笔将获得1次抽奖机会，每位用户最多获得2次；</p></li>
+        <li><span class="lf-num">3）</span><p class="detail-rule">全场项目最高三倍积分；</p></li>
+        <li><span class="lf-num">4）</span><p class="detail-rule">积分商城爆款商品可8折兑换；</p></li>
+        <li><span class="lf-num">5）</span><p class="detail-rule">新手宝、变现通不参与本活动；</p></li>
+        <li><span class="lf-num">6）</span><p class="detail-rule">兑奖须知：请务必在2017年12月15日23:59前进行奖品兑换，如此前未填写收货地址或信息有误，将视为自动放弃领奖（地址填写方法：登录旺财谷进入“账户-个人头像-奖品邮寄地址”），奖品将于活动结束后的七个工作日内统一发放，请保持电话畅通。如有疑问，请联系在线客服或拨打官方热线400-888-6268（周一至周五9:00-18:00）</p></li>
+        <p>*在法律允许范围内本活动最终解释权归旺财谷所有<span class="apple" style="display: none">本活动与苹果公司无关</span></p>
+    </ul>
+    <div class="rules-btn">确认</div>
+</div>
+<script>
+    $(function(){
+        $('.money-icon').on('click', function(event){
+            event.stopPropagation();
+           $('.formula,.trans').show();
+        });
+        $('body').on('click', function(){
+            $('.formula,.trans').hide();
+        });
+        $('.close-pop-btn').on('click', function(){
+            $('.prizes-box').hide();
+            $(this).parent().hide();
+        });
+    });
+</script>
+</body>
+</html>

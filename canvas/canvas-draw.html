@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas-pc－wap</title>
+    <style>
+        .my-canvas {
+            flex: 1;
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 3px 5px #f0f;
+        }
+        .my-canvas img {
+            width: 100%;
+        }
+    </style>
+    <!--
+        1.指定识别区域位置（画板canvas手绘区域）
+        2.回调机制（形状，相似度）
+        3.可自定义配置新的手势
+        4.自定义手势画笔颜色
+
+        怎么使用？
+        －－－－－－－－－－－－－－－－－－－－－－－－
+        1.调用
+            gesture();
+        2.指定容器
+            gesture({ nodeID: "imgbox" });
+        3.回调
+            gesture({callback: function(res){
+
+            }});
+        4.配置
+            gesture({strokes: [{手势1集合},{手势2集合},{手势3集合}.....], color: red });
+
+    -->
+</head>
+<body>
+<div id="my-canvas" class="my-canvas">
+    <img src="../video-list/images/video-01.png" alt="">
+</div>
+<script src="js/canvas-01.js"></script>
+</body>
+</html>

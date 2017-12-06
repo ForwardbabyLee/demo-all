@@ -1,0 +1,185 @@
+/*  安全保障 页面  */
+.clearfix:before,.clearfix:after {
+    content:'';
+    display:table;
+}
+.clearfix:after{
+    clear: both;
+}
+.clearfix {
+    *zoom:1;
+}
+
+.safeguard-box {
+    width: 100%;
+    background: #fff;
+}
+.safeguard-box .safeguard-banner {
+    width: 100%;
+    min-width: 1057px;
+    height:406px;
+    background: #eee;
+    position: relative;
+    overflow: hidden;
+}
+.safeguard-box .safeguard-banner-box {
+    position: absolute;
+    width:100%;
+    height:406px;
+    background: url('../images/safeguard/safeguard-banner1.png') no-repeat center center;
+    background-size :150%;
+    opacity: 0.3;
+    z-index: 1;
+}
+.safeguard-box .safeguard-banner .safeguard-banner-center {
+    position: relative;
+    left:50%;
+    top:0;
+    margin-left:-500px;
+    width:1000px;
+    height:406px;
+    z-index: 10;
+    overflow: hidden;
+}
+.safeguard-box .safeguard-banner .safeguard-banner-center .bd {
+    width:100%;
+    height:100%;
+}
+.safeguard-box .safeguard-banner .banner {
+    float: left;
+    margin:30px auto;
+    width:1000px;
+    height: 346px;
+    background: url('../images/safeguard/safeguard-banner1.png') no-repeat center center;
+    background-size :100% 100%;
+    cursor: pointer;
+}
+.safeguard-box .safeguard-banner .banner1 {
+    background: url('../images/safeguard/safeguard-banner2.png') no-repeat center center;
+}
+.safeguard-box .safeguard-banner .banner2 {
+    background: url('https://www.wangcaigu.com/upload/ads/1461859200/banner-%E5%8C%97%E4%BA%AC%E6%96%B0%E9%97%BB1461893968.jpg') no-repeat center center;
+}
+
+
+.safeguard-box .safeguard-banner .safeguard-banner-center .hd {
+    position: absolute;
+    left:0;
+    bottom:30px;
+    width:100%;
+    color:#f0f;
+}
+.safeguard-box .safeguard-banner .safeguard-banner-center .hd .txt {
+    float: left;
+    height:50px;
+    line-height:50px;
+    font-size: 16px;
+    text-align: center;
+    background: rgba(210,220,210,0.6);
+}
+.safeguard-box .safeguard-container {
+    width:100%;
+    min-width: 1057px;
+    background: #fff;
+}
+.safeguard-box .safeguard-container .safeguard-container-box {
+    margin:0 auto;
+    width:1000px;
+}
+.safeguard-box .safeguard-container .safeguard-container-box .safeguard-icons {
+    margin:36px 82px 0;
+}
+.safeguard-box .safeguard-icons ul.icons {
+    margin:0 auto;
+    /*background: red;*/
+    overflow:hidden;
+}
+.safeguard-box .safeguard-icons ul.icons li {
+    float: left;
+    margin-right: 41px;
+    width:178px;
+    height:226px;
+}
+.safeguard-box .safeguard-icons ul.icons li.last {
+    margin-right: 0!important;
+}
+.safeguard-box .safeguard-icons ul.icons li a {
+    width:178px;
+    height: 184px;
+    display: block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    overflow: hidden;
+}
+.safeguard-box .safeguard-icons ul.icons li.active {
+    background: url('../images/safeguard/safeguard-icons-hover.png') no-repeat 0 0;
+}
+.safeguard-box .safeguard-icons ul.icons li a:hover {
+    background: url('../images/safeguard/safeguard-icons-hover.png') no-repeat 0 0;
+    transform: scale(1) rotate(360deg);
+    -webkit-transform: scale(1) rotate(360deg);
+    -o-transform: scale(1) rotate(360deg);
+    -moz-transform: scale(1) rotate(360deg);
+}
+.safeguard-box .safeguard-icons ul.icons li a img {
+    border:none;
+}
+.safeguard-box .safeguard-icons ul.icons li p {
+    width:100%;
+    height:42px;
+    line-height:42px;
+    text-align: center;
+    font-size: 18px;
+    color:#3e3a39;
+}
+.safeguard-box .safeguard-icons .arrow {
+    margin:0 auto;
+    height:122px;
+    background: url('../images/safeguard/safeguard-arrow-icon.png') no-repeat center center;
+}
+.safeguard-box .safeguard-icons .safetxt {
+    width:100%;
+}
+.safeguard-box .safeguard-icons .safetxt .safetxt-icon {
+    padding-left: 6px;
+    height:540px;
+}
+.safeguard-box .safeguard-icons .safetxt .safetxt-icon h3 {
+    height:32px;
+    line-height:32px;
+    font-size: 18px;
+    font-weight: bold;
+    color:#262323;
+}
+.safeguard-box .safeguard-icons .safetxt .safetxt-icon h4 {
+    margin-top: 25px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color:#262323;
+}
+.safeguard-box .safeguard-icons .safetxt p {
+    line-height: 30px;
+    font-size: 14px;
+    color:#3e3a39;
+}
+.safeguard-box .safeguard-icons .safetxt .p-padding-lf {
+    padding-left: 30px;
+}
+.safeguard-box .safeguard-icons .safetxt .p-margin-top {
+    margin-top: 30px;
+}
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+
+
+
+
+

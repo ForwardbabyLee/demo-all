@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- 引入 Bootstrap -->
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="../CSS/index.css">-->
+</head>
+<body>
+<!--    **********************************View start********************************-->
+<div>
+    <table class="table">
+        <thead>
+        <th>编号</th>
+        <th>歌曲名称</th>
+        <th>歌手</th>
+        <th>song_id</th>
+        <th>bitrate_fee</th>
+        <th>publishtime</th>
+        <th>pic_big</th>
+        <th>pic_small</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <button id="btn">获取数据</button>
+</div>
+<nav>
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous" id="prev">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li><a name="page1">1</a></li>
+        <li><a name="page2">2</a></li>
+        <li><a name="page3">3</a></li>
+        <li><a name="page4">4</a></li>
+        <li><a name="page5">5</a></li>
+        <li><a name="page6">6</a></li>
+        <li><a name="page7">7</a></li>
+        <li><a name="page8">8</a></li>
+        <li><a name="page9">9</a></li>
+        <li><a name="page10">10</a></li>
+        <li>
+            <a aria-label="Next" id="next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<!--    **********************************View end********************************-->
+</body>
+<script type="text/javascript">
+
+    var listData = new Array();
+    //    **********************************Model start********************************
+    function musicModel() {
+        this.title = "";
+        this.songName = "";
+        this.songAuthor = "";
+        this.songId = "";
+        this.bitrate_fee = "";
+        this.publishtime = "";
+        this.pic_big = "";
+        this.pic_small = "";
+        this.number = 0;
+
+        musicModel.prototype.getTitle = function() {
+            return this.title;
+        }
+
+        musicModel.prototype.songName = function() {
+            return this.songName;
+        }
+
+        musicModel.prototype.songAuthor = function() {
+            return this.songAuthor;
+        }
+
+        musicModel.prototype.songId = function() {
+            return this.songId;
+        }
+
+        musicModel.prototype.bitrate_fee = function() {
+            return this.bitrate_fee;
+        }
+
+        musicModel.prototype.publishtime = function() {
+            return this.publishtime;
+        }
+
+        musicModel.prototype.pic_big = function() {
+            return this.pic_big;
+        }
+
+        musicModel.prototype.pic_small = function() {
+            return this.pic_small;
+        }
+
+        musicModel.prototype.number = function() {
+            return this.number;
+        }
+
+        musicModel.prototype.title = function(title) {
+            this.title = title;
+        }
+
+        musicModel.prototype.songName = function(songName) {
+            this.songName = songName;
+        }
+
+        musicModel.prototype.songAuthor = function(songAuthor) {
+            this.songAuthor = songAuthor;
+        }
+
+        musicModel.prototype.songId = function(songId) {
+            this.songId = songId;
+        }
+
+        musicModel.prototype.bitrate_fee = function(bitrate_fee) {
+            this.bitrate_fee = bitrate_fee;
+        }
+
+        musicModel.prototype.publishtime = function(publishtime) {
+            this.publishtime = publishtime;
+        }
+
+        musicModel.prototype.pic_big = function(pic_big) {
+            this.pic_big = pic_big;
+        }
+
+        musicModel.prototype.pic_small = function(pic_small) {
+            this.pic_small = pic_small;
+        }
+
+        musicModel.prototype.number = function(number) {
+            this.number = number;
+        }
+    }
+    //    **********************************Model end********************************
+
+    //    **********************************controller start********************************
+    //请求数据
+    function requestData(url){
+        $.ajax({
+            url:url,
+            dataType:"jsonp",
+            jsonp:"callback",
+            success:function(data){
+                getData(data);
+            }
+        });
+    }
+    //解析数据
+    function getData(data){
+        var songList = data["song_list"];
+        if(listData.length != 0){
+            listData.length = 0;
+        }
+        $.each(songList,function (i,v) {
+            var model = new musicModel();
+            model.number = i+1;
+            model.title = v["title"];
+            model.songAuthor =v["author"];
+            model.songId = v["song_id"];
+            model.bitrate_fee = v["bitrate_fee"];
+            model.publishtime = v["publishtime"];
+            model.pic_big = v["pic_big"];
+            model.pic_small = v["pic_small"];
+            listData.push(model);
+        })
+        //清除原来的数据
+        clearData();
+        //填充新的数据
+        setData();
+    }
+    //赋值
+    function setData(){
+        for(var  i = 0;i < listData.length;i++) {
+            //添加行
+            $(".table").append("<tr id=option"+i+
+                "><td>"+listData[i].number+
+                "</td><td>"+listData[i].title+
+                "</td><td>"+listData[i].songAuthor+
+                "</td><td>"+listData[i].songId+
+                "</td><td>"+listData[i].bitrate_fee+
+                "</td><td>"+listData[i].publishtime+
+                "</td><td>"+listData[i].pic_big+
+                "</td><td>"+listData[i].pic_small+
+                +"</td>"+
+                "</tr>")
+        }
+    }
+    //删除行(清空旧数据)
+    function clearData(){
+        for(var  i = 0;i < listData.length;i++){
+            $("#option"+i).remove();
+        }
+    }
+    //分页响应事件
+    function pageClick(name) {
+        console.log(name);
+        switch (name) {
+            case "page1":
+            {
+                requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset=0");
+            }
+                break;
+            case "page2":
+            {
+                requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset=1");
+            }
+                break;
+            case "page3":
+            {
+                requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset=2");
+            }
+                break;
+            case "page4":
+            {
+                requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset=3");
+            }
+                break;
+            case "page5":
+            {
+                requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset=4");
+            }
+                break;
+            case "page6":
+            {
+                requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset=5");
+            }
+                break;
+            case "page7":
+            {
+                requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset=6");
+            }
+                break;
+            case "page8":
+            {
+                requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset=7");
+            }
+                break;
+            case "page9":
+            {
+                requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset=8");
+            }
+                break;
+
+            case "page10":
+            {
+                requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset=9");
+            }
+                break;
+        }
+    }
+    //    **********************************controller end********************************
+    //获取链接中的参数
+    function getUrlParam(url,name){
+        var pattern = new RegExp("[?&]" + name +"\=([^&]+)","g");
+        var matcher = pattern.exec(url);
+        var items = null;
+        if(matcher != null){
+            try{
+                items = decodeURIComponent(decodeURIComponent(matcher[1]));
+            }catch(e){
+                try{
+                    items = decodeURIComponent(matcher[1]);
+                }catch(e){
+                    items = matcher[1];
+                }
+            }
+        }
+        return items;
+    }
+    //加载页面
+    $(document).ready(function(){
+        var url = window.location;
+
+        //加载数据
+        $("#btn").click(function(){
+            requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset=0");
+        });
+        //分页处理<数字页数>
+        $("ul li a").click(function(){
+            var name = $(this).attr("name");
+            pageClick(name);
+        });
+        //实现上一页/下一页跳转
+        $("#prev").click(function(){
+            var currentPage = getUrlParam(url,"offset"); //获取当前页码
+            requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset="+(parseInt(currentPage)-1).toString());
+        });
+
+        $("#next").click(function(){
+            var currentPage = getUrlParam(url,"offset"); //获取当前页码
+            console.log(currentPage);
+            requestData("http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=10&offset="+(parseInt(currentPage)+1).toString());
+        });
+
+    });
+
+</script>
+</html>

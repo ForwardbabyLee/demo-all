@@ -1,0 +1,152 @@
+一、 活动内容总结
+ToDo：1. 适配iPhone x （页面底部悬浮按钮）
+    解决方案：动态添加meta（只在iphone app里－－兼容问题）  <meta name="viewport" content="width=device-width,viewport-fit=cover,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    if (moduleFn.parseUA().wcgiphone) {
+        $('.apple').show();
+        var oMeta = document.createElement('meta');
+        oMeta.name = 'viewport';
+        oMeta.content = 'width=device-width,viewport-fit=cover,initial-scale=1.0,maximum-scale=1.0,user-scalable=no';
+        document.getElementsByTagName('head')[0].appendChild(oMeta);
+    }
+
+ToDo：2. 动画（规则＋抽奖）－css3
+    .fadeShowLeft {
+        -webkit-animation: fadeShowLeft 1s ease-in-out;
+        animation: fadeShowLeft 1s ease-in-out;
+    }
+    @-webkit-keyframes fadeShowLeft {
+        0%,20%,40%,60%,80%,100% {
+            opacity: 1;
+        }
+        10%,30%,50%,70%,90% {
+            opacity: 0;
+        }
+    }
+    @keyframes fadeShowLeft {
+        0%,20%,40%,60%,80%,100% {
+            opacity: 1;
+        }
+        10%,30%,50%,70%,90% {
+            opacity: 0;
+        }
+    }
+    .fadeInDown {
+        -webkit-animation: fadeInDown 0.9s ease-in-out;
+        animation: fadeInDown 0.9s ease-in-out;
+    }
+    @-webkit-keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, -100%, 0);
+        }
+        50% {
+            opacity: 0.8;
+            -webkit-transform: none;
+        }
+        80% {
+            opacity: 1;
+            -webkit-transform: translate3d(0, -12%, 0);
+        }
+        to {
+            opacity: 1;
+            -webkit-transform: none;
+        }
+    }
+    @keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, -100%, 0);
+        }
+        50% {
+            opacity: 0.8;
+            transform: none;
+        }
+        80% {
+            opacity: 1;
+            transform: translate3d(0, -12%, 0);
+        }
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+ToDo：3. 给a链接添加指定事件，并a自身带有href属性；会造成冗余的刷新页面－－－添加return
+    $('.my-tips .my-prize').on('click', function() {
+        var elments = 'prize';
+        funActiveStatus(activeStatus,isLogin,elments);
+        return; // 阻止默认事件
+    });
+
+ToDo：4. 页面逻辑
+    1⃣️ 触发事件－click 传递对象 （ draw-抽奖; prize -我的奖品 ＝＝》 elments ）
+    $('.my-tips .my-prize').on('click', function() {
+        funActiveStatus(activeStatus,isLogin,elments); // 活动状态
+    });
+
+    2⃣️   活动状态判断  funActiveStatus();
+    function funActiveStatus(status,isLogin,elments) {
+        if (status === 1) {
+           // 开始
+        } else if (status === 2){ // 进行中
+            funElments(isLogin,elments);
+        } else if (status === 3){
+            // 结束
+        }
+    }
+
+     3⃣️   对象传递－－判断  funElments();
+     function funElments(isLogin,elments) {
+         switch (elments) {
+             case 'draw':
+                 draw(isLogin);
+                 break;
+             case 'prize':
+                 prize(isLogin,elments);
+                 break;
+             default:
+                 break;
+         }
+     }
+
+     4⃣️  draw() 抽奖事件
+     function draw(isLogin) {
+         if (isLogin === 1) {
+             drawMove();
+         } else {
+           // 未登录 跳转去登录
+         }
+     }
+
+     5⃣️  prize() 我的奖品按钮事件
+     function prize(isLogin,elments) {
+         if (isLogin === 1) {
+             prizeResult(elments);
+         } else {
+          // 未登录 跳转去登录
+         }
+     }
+
+    7⃣️  三个接口
+    ToDo： init() 初始化接口；prizeResult(elments) 奖品内容接口；drawMove() 抽奖接口
+
+    8⃣️  垂直滚动轮播
+    setTimeout(function () {
+        var lunboLength = $('.prize-list .list li').length;
+        if (lunboLength > 5) {
+            lunBo();
+        }
+    }, 1000);
+    function lunBo() {
+        var liH = 1.1;
+        var ts = setInterval(function () {
+            $('.prize-list .list li').eq(0).animate({"margin-top": "-" + liH + "rem"}, 1000, function () {
+                $('.prize-list .list li').eq(0).css({"margin-top": 0});
+                $('.prize-list .list li').eq(0).appendTo($('.prize-list .list'));
+            });
+        }, 2000);
+    }
+
+    9⃣️  在app 里，页面按钮跳到原生登录、注册、投资等页面的跳转问题
+     app-viewtype = 'login' success-url=''
+      app-viewtype="register" register-channel="double1712"

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/layer.css">
+    <style>
+        .popuo-login {
+            border:none; background-color:#78BA32; color:#fff;
+        }
+
+        .popuo-login .layui-m-layerbtn {
+            margin: 0 auto;
+            width: 80%;
+            background: none;
+            border: none;
+        }
+        .popuo-login .layui-m-layerbtn span[yes] {
+            margin: 0 5%;
+            width: 30%;
+            background:#0ff;
+            color: #000;
+        }
+        .popuo-login .layui-m-layerbtn span[no] {
+            margin: 0 5%;
+            width: 30%;
+            background:#f0f;
+            color: #000;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<a class="check_contract" data-value="20170423115633395764" href="/UserAccount/contractShow?id=20170423115633395764&type=ybq" target="_blank">查看</a>
+<a class="btn">按钮</a>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/layer.js"></script>
+<script>
+    $(function(){
+        $('a').on('click',function(){
+            layer.msg('也可以这样', {
+                time: 20000, //20s后自动关闭
+                btn: ['明白了', '知道了']
+            });
+//            layer.open({
+//                content: '查看网站'
+//                ,btn: ['wap', 'pc']
+//                ,className: 'popuo-login'
+//                ,yes: function(index){
+//                    window.location.href="https://m.wangcaigu.com";
+//                    layer.close(index);
+//                }
+//                ,no: function(index){
+//                    window.location.href="https://www.wangcaigu.com";
+//                    layer.close(index);
+//                }
+//            })
+        })
+//        $('.')
+    });
+</script>
+</body>
+</html>
